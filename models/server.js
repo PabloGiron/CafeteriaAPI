@@ -1,5 +1,6 @@
 const express = require('express')
-const cors = require('cors')
+const cors = require('cors');
+const { dbConnection } = require('../database/config');
 
 
 class Server {
@@ -9,10 +10,17 @@ class Server {
         this.port = process.env.PORT;
         this.usersPath = '/api/users';
         
+        //Conectar a la base de datos 
+        this.connectDB();
+
         //Middlewares Es una funcion que siempre se ejecute?
         this.middleswares();
         //Rutas de la aplicación
         this.routes();
+    }
+
+    async connectDB(){
+        await dbConnection(); 
     }
     
     middleswares(){
