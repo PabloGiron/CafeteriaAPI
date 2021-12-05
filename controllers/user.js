@@ -83,11 +83,14 @@ const usersDelete = async (req, res = response ) => {
     
     const {id} = req.params;
 
-    // Físiciamente eliminar el registro de la BD
-    // const user = await User.findByIdAndDelete( id );
+    const uid = req.uid;
+    //TODO: usuarioAutenticado 
+    const usuarioAutenticado = req.usuarioAutenticado
     const user = await User.findByIdAndUpdate( id, {state: false} );
-    res.json(user);
-        // msg: "delete API - Controller")
+    res.json({user, usuarioAutenticado });
+    // msg: "delete API - Controller")
+    // Físicamente eliminar el registro de la BD
+    // const user = await User.findByIdAndDelete( id );
 }
 
 module.exports = {

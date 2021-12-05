@@ -30,12 +30,24 @@ const UserSchema = Schema ({
     google: {
         type: Boolean,
         default: false
+    },
+    uid:{
+        type: String,
     }
 });
 
+
 UserSchema.methods.toJSON = function() {
-    const { __v, password, ...usuario  } = this.toObject();
+    const { __v, password, _id,...usuario} = this.toObject();
+    usuario.uid = _id;
+    // usuario. 
+    // delete usuario.nombre;
+    // this.uid = nombre._id;
+
+    //RESPUESTA
+    // usuario.uid = _id   sin declararlo en el Schema
     return usuario;
+
 }
 
 

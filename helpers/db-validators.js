@@ -26,7 +26,7 @@ const validarEmail = async (correo) => {
 }
 
 const existeUsuarioPorId  = async ( id ) => {
-    console.log('Se ha recibido el id:', id)
+    //console.log('Se ha recibido el id:', id)
 
     const usuarioExiste = await User.findById(id);
     // console.log('existeUsuario:', existeUsuario);
