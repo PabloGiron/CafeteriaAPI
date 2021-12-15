@@ -1,13 +1,13 @@
 {
   "name": "07-restserver",
   "version": "1.0.0",
-  "description": "",
+  "description": "Para ejecutar la api: ```npm install``` para construir los modulos de módulos de NodeJs",
   "main": "index.js",
   "scripts": {
     "start": "node app"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pablo Giron",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -18,5 +18,13 @@
     "google-auth-library": "^7.10.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.13"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloGiron/CafeteriaAPI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PabloGiron/CafeteriaAPI/issues"
+  },
+  "homepage": "https://github.com/PabloGiron/CafeteriaAPI#readme"
 }
