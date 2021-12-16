@@ -35,7 +35,7 @@ const usersGet = async (req, res = response ) => {
 const usersPost = async (req, res = response ) => {
 
     const {  nombre, correo, password, role } = req.body;
-    const body = req.body;
+    // const body = req.body;
     const user = new User({nombre, correo, password, role});
 
 
