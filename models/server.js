@@ -1,6 +1,9 @@
 const express = require('express')
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
+
 const { dbConnection } = require('../database/config');
+
 
 
 class Server {
@@ -15,6 +18,7 @@ class Server {
             products:   '/api/products',
             search:     '/api/search',
             users:      '/api/users',
+            uploads:    '/api/uploads',
         }
         
         // this.usersPath = '/api/users';
@@ -27,6 +31,7 @@ class Server {
         this.middleswares();
         //Rutas de la aplicación
         this.routes();
+       
     }
 
     async connectDB(){
@@ -40,15 +45,22 @@ class Server {
         this.app.use(express.json());
         // Directorio público
         this.app.use( express.static('public') );
-
+        //Carga de archivos
+        this.app.use(fileUpload({
+            useTempFiles : true,
+            tempFileDir : '/tmp/',
+            createParentPath: true
+        }));
     }
 
     routes(){
-        this.app.use( this.paths.auth , require('../routes/auth'))
-        this.app.use( this.paths.categories , require('../routes/categories'))
+        this.app.use( this.paths.auth , require('../routes/auth'));
+        this.app.use( this.paths.categories , require('../routes/categories'));
         this.app.use( this.paths.products , require('../routes/products'));
-        this.app.use( this.paths.search , require('../routes/search'))
-        this.app.use( this.paths.users , require('../routes/user'))
+        this.app.use( this.paths.search , require('../routes/search'));
+        this.app.use( this.paths.users , require('../routes/user'));
+        this.app.use( this.paths.uploads , require('../routes/uploads'));
+
     }
 
     listen(){
